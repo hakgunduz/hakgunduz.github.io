@@ -3,6 +3,6 @@ title: Notes
 permalink: /notes/
 layout: default
 ---
-<h1>Notes</h1>
+<h1 class="list-title">Notes</h1>
 {% assign docs = site.notes | sort: 'date' | reverse %}
 {% include entry-list.html docs=docs %}

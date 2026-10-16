@@ -3,14 +3,16 @@ layout: default
 ---
 {% assign words = content | strip_html | number_of_words %}
 {% assign minutes = words | divided_by: 230 | at_least: 1 %}
-<article class="prose entry">
-  <header class="entry-header">
+<article class="entry entry--{{ page.kind | downcase }}">
+  <header>
     <h1>{{ page.title }}</h1>
     <p class="meta">
       {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time> · {% endif %}{{ minutes }} min read
     </p>
   </header>
-  {{ content }}
+  <div class="prose">
+    {{ content }}
+  </div>
 </article>
 
 {% assign docs = site[page.collection] | sort: 'date' | reverse %}

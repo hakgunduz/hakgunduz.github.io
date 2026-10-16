@@ -1,12 +1,13 @@
-{% comment %}Usage: include entry-list.html docs=... show_kind=true{% endcomment %}
+{% comment %}Usage: include entry-list.html docs=... limit=4 (limit optional){% endcomment %}
+{% assign max = include.limit | default: 1000 %}
 <ul class="entries">
-  {% for doc in include.docs %}
+  {% for doc in include.docs limit: max %}
+  {% assign desc = doc.description | default: doc.content | markdownify | strip_html | strip_newlines | truncatewords: 14 %}
   <li>
-    <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-    <span class="entry-meta">
-      {% if include.show_kind %}<span class="kind">{{ doc.kind }}</span>{% endif %}
-      {% if doc.date %}<time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: '%b %Y' }}</time>{% endif %}
-    </span>
+    <a href="{{ doc.url | relative_url }}">
+      <span class="t">{{ doc.title }}</span>
+      <span class="desc">{{ desc }}</span>
+    </a>
   </li>
   {% else %}
   <li class="empty">Nothing here yet.</li>
