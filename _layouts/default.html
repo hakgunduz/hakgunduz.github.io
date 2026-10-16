@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <nav aria-label="Main">
+      {% assign section = page.url | split: '/' | slice: 1 | first %}
+      <a href="{{ '/notes/' | relative_url }}"{% if section == 'notes' %} aria-current="page"{% endif %}>Notes</a>
+      <a href="{{ '/stories/' | relative_url }}"{% if section == 'stories' %} aria-current="page"{% endif %}>Stories</a>
+      <a href="{{ '/about/' | relative_url }}"{% if section == 'about' %} aria-current="page"{% endif %}>About</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    {% include subscribe.html %}
+    <p class="fine">© {{ 'now' | date: '%Y' }} {{ site.title }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
+  </footer>
+</body>
+</html>

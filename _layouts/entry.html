@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 230 | at_least: 1 %}
+<article class="prose entry">
+  <header class="entry-header">
+    <h1>{{ page.title }}</h1>
+    <p class="meta">
+      {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time> · {% endif %}{{ minutes }} min read
+    </p>
+  </header>
+  {{ content }}
+</article>
+
+{% assign docs = site[page.collection] | sort: 'date' | reverse %}
+{% for doc in docs %}
+  {% if doc.url == page.url %}
+    {% assign newer_index = forloop.index0 | minus: 1 %}
+    {% assign older_index = forloop.index0 | plus: 1 %}
+    {% if forloop.first == false %}{% assign newer = docs[newer_index] %}{% endif %}
+    {% assign older = docs[older_index] %}
+  {% endif %}
+{% endfor %}
+{% if newer or older %}
+<nav class="pager" aria-label="More {{ page.collection }}">
+  {% if older %}<a href="{{ older.url | relative_url }}"><span>Previous</span>{{ older.title }}</a>{% else %}<span></span>{% endif %}
+  {% if newer %}<a class="next" href="{{ newer.url | relative_url }}"><span>Next</span>{{ newer.title }}</a>{% endif %}
+</nav>
+{% endif %}

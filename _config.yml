@@ -1,0 +1,38 @@
+# Site settings — edit these three first.
+title: Your Name
+description: Notes and short stories.
+buttondown_username: ""   # your Buttondown username; the subscribe form appears once this is set
+
+url: ""        # e.g. https://username.github.io (set after the first deploy)
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true   # single line breaks behave like they do in Obsidian
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:slug/
+  stories:
+    output: true
+    permalink: /stories/:slug/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page }
+  - scope: { path: "", type: notes }
+    values: { layout: entry, kind: Note }
+  - scope: { path: "", type: stories }
+    values: { layout: entry, kind: Story }
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Templates
+  - vendor

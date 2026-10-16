@@ -1,0 +1,14 @@
+{% comment %}Usage: include entry-list.html docs=... show_kind=true{% endcomment %}
+<ul class="entries">
+  {% for doc in include.docs %}
+  <li>
+    <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+    <span class="entry-meta">
+      {% if include.show_kind %}<span class="kind">{{ doc.kind }}</span>{% endif %}
+      {% if doc.date %}<time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: '%b %Y' }}</time>{% endif %}
+    </span>
+  </li>
+  {% else %}
+  <li class="empty">Nothing here yet.</li>
+  {% endfor %}
+</ul>
