@@ -3,7 +3,7 @@ title: Your Name
 description: Notes and short stories.
 buttondown_username: ""   # your Buttondown username; the subscribe form appears once this is set
 
-url: ""        # e.g. https://username.github.io (set after the first deploy)
+url: "https://hakgunduz.github.io"
 baseurl: ""
 
 markdown: kramdown
