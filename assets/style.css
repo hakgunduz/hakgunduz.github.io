@@ -165,7 +165,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
 }
 .prose p, .prose ul, .prose ol, .prose pre, .prose figure, .prose table { margin: 0 0 1.35rem; }
-.prose p { text-wrap: pretty; }
+.prose p { text-wrap: pretty; overflow-wrap: break-word; }
 .prose ul, .prose ol { padding-left: 1.25rem; }
 .prose li + li { margin-top: 0.3rem; }
 .prose h2 { margin: 3rem 0 1rem; font: 400 1.875rem/1.2 var(--display); }
@@ -192,6 +192,24 @@ a { color: inherit; text-decoration: none; }
 .prose pre { overflow-x: auto; padding: 1rem; border: 1px solid var(--line); border-radius: 6px; font-size: 0.875rem; line-height: 1.55; }
 .prose table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
 .prose th, .prose td { padding: 0.4rem 0.75rem 0.4rem 0; border-bottom: 1px solid var(--line); text-align: left; }
+
+/* Articles */
+.ar-year { margin: 0 0 2.5rem; }
+.ar-list { list-style: none; margin: 0; padding: 0; }
+.ar-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line);
+}
+.ar-list a { font-weight: 500; }
+.ar-list a:hover { text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 0.2em; }
+.ar-list time { flex-shrink: 0; font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.origin { margin: 3rem 0 0; font-size: 0.875rem; color: var(--muted); }
+.origin a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 0.2em; }
+.origin a:hover { color: var(--text); }
 
 /* Loglines */
 .ll-intro { max-width: 34rem; margin: 0 0 1.75rem; color: var(--soft); }

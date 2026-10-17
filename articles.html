@@ -1,0 +1,26 @@
+---
+title: Articles
+permalink: /articles/
+layout: default
+description: Essays on screenwriting and storytelling.
+---
+<h1 class="list-title">Articles</h1>
+<p class="ll-intro">Essays on screenwriting and storytelling, mostly what I learned reading screenplays and pilot scripts. First published on Medium.</p>
+
+{% assign docs = site.articles | sort: 'date' | reverse %}
+{% assign current = "" %}
+{% for doc in docs %}
+  {% assign year = doc.date | date: "%Y" %}
+  {% if year != current %}
+    {% unless forloop.first %}</ul></section>{% endunless %}
+<section class="ar-year">
+  <h2 class="label">{{ year }}</h2>
+  <ul class="ar-list">
+    {% assign current = year %}
+  {% endif %}
+    <li>
+      <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+      <time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%-d %b" }}</time>
+    </li>
+  {% if forloop.last %}</ul></section>{% endif %}
+{% endfor %}

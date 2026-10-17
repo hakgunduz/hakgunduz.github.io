@@ -19,6 +19,9 @@ collections:
   stories:
     output: true
     permalink: /stories/:slug/
+  articles:
+    output: true
+    permalink: /articles/:slug/
 
 defaults:
   - scope: { path: "" }
@@ -27,6 +30,8 @@ defaults:
     values: { layout: entry, kind: Note }
   - scope: { path: "", type: stories }
     values: { layout: entry, kind: Story }
+  - scope: { path: "", type: articles }
+    values: { layout: entry, kind: Article }
 
 plugins:
   - jekyll-seo-tag
