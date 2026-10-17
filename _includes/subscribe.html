@@ -1,4 +1,13 @@
-{% if site.buttondown_username and site.buttondown_username != "" %}
+{% comment %}Substack is used when substack_url is set; otherwise Buttondown, if configured.{% endcomment %}
+{% if site.substack_url and site.substack_url != "" %}
+<form class="subscribe" action="{{ site.substack_url }}/subscribe" method="get" target="_blank">
+  <label for="sub-email">Get new writing by email.</label>
+  <div class="subscribe-row">
+    <input id="sub-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    <button type="submit">Subscribe</button>
+  </div>
+</form>
+{% elsif site.buttondown_username and site.buttondown_username != "" %}
 <form class="subscribe" action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondown_username }}" method="post" target="_blank">
   <label for="bd-email">Get new writing by email.</label>
   <div class="subscribe-row">
