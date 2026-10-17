@@ -37,7 +37,36 @@ module ObsidianLinks
   end
 end
 
+module PlainNotes
+  # Notes moved in from Obsidian usually have no front matter. Jekyll would copy
+  # those as raw files, so turn them into real pages. The date is when the file
+  # first entered the repository (i.e. when it was published), falling back to
+  # the file's modified time.
+  def self.adopt(site)
+    %w[notes stories articles].each do |label|
+      collection = site.collections[label] or next
+      collection.files.select { |f| %w[.md .markdown].include?(f.extname) }.each do |file|
+        doc = Jekyll::Document.new(file.path, site: site, collection: collection)
+        doc.read
+        doc.data["date"] = published_at(site, file.path) if doc.data["date"].nil? || doc.data["date"] == site.time
+        collection.docs << doc
+        collection.files.delete(file)
+        site.static_files.delete(file)
+      end
+      collection.docs.sort!
+    end
+  end
+
+  def self.published_at(site, path)
+    out = IO.popen(["git", "-C", site.source, "log", "--diff-filter=A", "--follow", "--format=%aI", "-1", "--", path], err: File::NULL, &:read).to_s.strip
+    out.empty? ? File.mtime(path) : Time.parse(out)
+  rescue StandardError
+    File.mtime(path)
+  end
+end
+
 Jekyll::Hooks.register :site, :post_read do |site|
+  PlainNotes.adopt(site)
   # Use the Obsidian file name as the title, exactly as written
   # (Jekyll would otherwise Title Case Every Word).
   site.collections.each_value do |collection|
