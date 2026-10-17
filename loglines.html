@@ -1,0 +1,33 @@
+---
+title: Loglines
+permalink: /loglines/
+layout: default
+description: A logline a day for all of 2022.
+---
+<header class="ll-head">
+  <h1 class="list-title">Loglines</h1>
+  <p class="ll-intro">In 2022 I wrote one logline a day, for a whole year: an idea for a film, in a few sentences, with a line from an imaginary review. These are all {{ site.data.loglines | size }} of them.</p>
+</header>
+<nav class="ll-months" aria-label="Months">
+    {% assign months = "January,February,March,April,May,June,July,August,September,October,November,December" | split: "," %}
+    {% for m in months %}<a href="#{{ m | downcase }}">{{ m | slice: 0, 3 }}</a>{% endfor %}
+</nav>
+
+{% assign current = "" %}
+{% for l in site.data.loglines %}
+  {% assign month = l.date | date: "%B" %}
+  {% if month != current %}
+    {% unless forloop.first %}</ol></section>{% endunless %}
+    <section class="ll-month" id="{{ month | downcase }}">
+      <h2 class="ll-month-title">{{ month }} <span>2022</span></h2>
+      <ol class="ll-list">
+    {% assign current = month %}
+  {% endif %}
+  <li class="ll" id="{{ l.date }}">
+    <p class="ll-meta"><a href="#{{ l.date }}"><time datetime="{{ l.date }}">{{ l.date | date: "%-d %b" }}</time></a> · {{ l.genre }}</p>
+    <h3 class="ll-title">{{ l.title }}</h3>
+    <p class="ll-text">{{ l.logline }}</p>
+    {% if l.quote and l.quote != "" %}<p class="ll-quote">“{{ l.quote }}”</p>{% endif %}
+  </li>
+  {% if forloop.last %}</ol></section>{% endif %}
+{% endfor %}

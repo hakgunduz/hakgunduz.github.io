@@ -23,6 +23,7 @@
       {% assign section = page.url | split: '/' | slice: 1 | first %}
       <a href="{{ '/notes/' | relative_url }}"{% if section == 'notes' %} aria-current="page"{% endif %}>Notes</a>
       <a href="{{ '/stories/' | relative_url }}"{% if section == 'stories' %} aria-current="page"{% endif %}>Stories</a>
+      <a href="{{ '/loglines/' | relative_url }}"{% if section == 'loglines' %} aria-current="page"{% endif %}>Loglines</a>
       <a href="{{ '/about/' | relative_url }}"{% if section == 'about' %} aria-current="page"{% endif %}>About</a>
       <button class="theme-toggle" type="button" aria-label="Switch theme" hidden>
         <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>

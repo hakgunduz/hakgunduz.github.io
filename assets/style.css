@@ -193,6 +193,35 @@ a { color: inherit; text-decoration: none; }
 .prose table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
 .prose th, .prose td { padding: 0.4rem 0.75rem 0.4rem 0; border-bottom: 1px solid var(--line); text-align: left; }
 
+/* Loglines */
+.ll-intro { max-width: 34rem; margin: 0 0 1.75rem; color: var(--soft); }
+.ll-months {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 0 3rem;
+  padding: 0.75rem 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+}
+.ll-months a { color: var(--muted); transition: color 0.15s; }
+.ll-months a:hover { color: var(--text); }
+.ll-month { scroll-margin-top: 4rem; }
+.ll-month-title { margin: 0 0 1.5rem; font: 400 2.25rem/1.1 var(--display); }
+.ll-month-title span { color: var(--muted); }
+.ll-list { list-style: none; margin: 0 0 4rem; padding: 0; }
+.ll { scroll-margin-top: 4rem; padding: 1.5rem 0; border-top: 1px solid var(--line); }
+.ll:target { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.ll-meta { margin: 0 0 0.25rem; font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ll-meta a:hover { color: var(--text); }
+.ll-title { margin: 0 0 0.5rem; font: 400 1.5rem/1.2 var(--display); }
+.ll-text { margin: 0 0 0.6rem; font: 400 1.0625rem/1.65 var(--serif); text-wrap: pretty; }
+.ll-quote { margin: 0; font: italic 400 1rem/1.5 var(--serif); color: var(--muted); }
+
 /* Stories open like a book */
 .entry--story .prose > p:first-of-type::first-letter {
   float: left;
@@ -269,6 +298,7 @@ a { color: inherit; text-decoration: none; }
   .site-header { padding: 2.5rem 0 2.5rem; }
   .intro p { margin-bottom: 3rem; }
   .index { grid-template-columns: 1fr; gap: 2.5rem; }
+  .site-header nav { flex-wrap: wrap; gap: 0.25rem 1rem; }
   .prose { font-size: 1.125rem; }
   .site-footer { margin-top: 5rem; }
 }
