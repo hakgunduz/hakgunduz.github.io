@@ -193,6 +193,38 @@ a { color: inherit; text-decoration: none; }
 .prose table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
 .prose th, .prose td { padding: 0.4rem 0.75rem 0.4rem 0; border-bottom: 1px solid var(--line); text-align: left; }
 
+/* Home */
+.otd { margin: 0 0 4rem; }
+.otd-card {
+  display: block;
+  margin: 0 0 1rem;
+  padding: 1.5rem 1.5rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+.otd-card:hover { border-color: var(--muted); }
+.otd-title { display: block; font: 400 1.75rem/1.15 var(--display); color: var(--text); }
+.otd-genre { display: block; margin: 0.3rem 0 0.75rem; font-size: 0.8125rem; color: var(--muted); }
+.otd-text { display: block; font: 400 1.0625rem/1.6 var(--serif); color: var(--soft); text-wrap: pretty; }
+.home-list { list-style: none; margin: 0 0 1rem; padding: 0; }
+.home-list li { margin: 0 0 0.9rem; }
+.home-list a { display: block; font-weight: 500; line-height: 1.45; }
+.home-list a:hover { text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 0.2em; }
+.home-list time { display: block; font-size: 0.8125rem; color: var(--muted); }
+.home-notes { margin-top: 3.5rem; }
+.empty-state { color: var(--muted); }
+.prose a.admin-btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font: 500 0.9375rem var(--sans);
+  text-decoration: none;
+}
+.prose a.admin-btn:hover { opacity: 0.85; color: var(--bg); }
+
 /* Articles */
 .ar-year { margin: 0 0 2.5rem; }
 .ar-list { list-style: none; margin: 0; padding: 0; }

@@ -1,0 +1,85 @@
+# Pages CMS (https://app.pagescms.org): sign in with GitHub to edit this site in the browser.
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: stories
+    label: Stories
+    type: collection
+    path: _stories
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      primary: title
+      fields: [title, date]
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: description, label: Short description (optional), type: text }
+      - { name: body, label: Story, type: rich-text, options: { format: markdown } }
+
+  - name: articles
+    label: Articles
+    type: collection
+    path: _articles
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      primary: title
+      fields: [title, date]
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: description, label: Subtitle (optional), type: text }
+      - { name: medium_url, label: Original Medium link (optional), type: string }
+      - { name: body, label: Article, type: rich-text, options: { format: markdown } }
+
+  - name: notes
+    label: Notes
+    type: collection
+    path: _notes
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      primary: title
+      fields: [title, date]
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: body, label: Note, type: rich-text, options: { format: markdown } }
+
+  - name: loglines
+    label: Loglines (2022)
+    type: file
+    path: _data/loglines.json
+    format: json
+    list: true
+    fields:
+      - { name: date, label: Date, type: string, description: "YYYY-MM-DD" }
+      - { name: title, label: Title, type: string }
+      - { name: genre, label: Genre, type: string }
+      - { name: logline, label: Logline, type: text }
+      - { name: quote, label: Review quote, type: string }
+
+  - name: about
+    label: About page
+    type: file
+    path: about.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: permalink, label: Address, type: string, hidden: true }
+      - { name: body, label: Text, type: rich-text, options: { format: markdown } }
+
+  - name: settings
+    label: Site settings
+    type: file
+    path: _config.yml
+    format: code

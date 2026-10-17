@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<section class="intro">
+  <p><em>Stories, essays, loglines.</em> I write short fiction, notes on how screenplays work, and for all of 2022, one logline a day.</p>
+</section>
+
+{% assign today = site.time | date: "%m-%d" %}
+{% assign otd = nil %}
+{% for l in site.data.loglines %}{% assign md = l.date | date: "%m-%d" %}{% if md == today %}{% assign otd = l %}{% break %}{% endif %}{% endfor %}
+{% if otd %}
+<section class="otd">
+  <h2 class="label">On this day in 2022</h2>
+  <a class="otd-card" href="{{ '/loglines/' | relative_url }}#{{ otd.date }}">
+    <span class="otd-title">{{ otd.title }}</span>
+    <span class="otd-genre">{{ otd.genre }}</span>
+    <span class="otd-text">{{ otd.logline }}</span>
+  </a>
+  <a class="all" href="{{ '/loglines/' | relative_url }}">All 365 loglines →</a>
+</section>
+{% endif %}
+
+{% assign stories = site.stories | sort: 'date' | reverse %}
+{% assign articles = site.articles | sort: 'date' | reverse %}
+<div class="index">
+  <section>
+    <h2 class="label">Latest stories</h2>
+    <ul class="home-list">
+      {% for doc in stories limit: 5 %}
+      <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a><time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%b %Y" }}</time></li>
+      {% endfor %}
+    </ul>
+    <a class="all" href="{{ '/stories/' | relative_url }}">All {{ stories | size }} stories →</a>
+  </section>
+  <section>
+    <h2 class="label">Latest articles</h2>
+    <ul class="home-list">
+      {% for doc in articles limit: 5 %}
+      <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a><time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%b %Y" }}</time></li>
+      {% endfor %}
+    </ul>
+    <a class="all" href="{{ '/articles/' | relative_url }}">All {{ articles | size }} articles →</a>
+  </section>
+</div>
+
+{% if site.notes.size > 0 %}
+{% assign notes = site.notes | sort: 'date' | reverse %}
+<section class="home-notes">
+  <h2 class="label">Notes</h2>
+  <ul class="home-list">
+    {% for doc in notes limit: 5 %}
+    <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a><time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%b %Y" }}</time></li>
+    {% endfor %}
+  </ul>
+  <a class="all" href="{{ '/notes/' | relative_url }}">All notes →</a>
+</section>
+{% endif %}

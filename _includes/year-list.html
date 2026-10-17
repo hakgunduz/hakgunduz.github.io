@@ -1,0 +1,19 @@
+{% comment %}Usage: include year-list.html docs=... (newest first). Groups entries under year headings.{% endcomment %}
+{% assign current = "" %}
+{% for doc in include.docs %}
+  {% assign year = doc.date | date: "%Y" %}
+  {% if year != current %}
+    {% unless forloop.first %}</ul></section>{% endunless %}
+<section class="ar-year">
+  <h2 class="label">{{ year }}</h2>
+  <ul class="ar-list">
+    {% assign current = year %}
+  {% endif %}
+    <li>
+      <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+      <time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%-d %b" }}</time>
+    </li>
+  {% if forloop.last %}</ul></section>{% endif %}
+{% else %}
+<p class="empty-state">Nothing here yet.</p>
+{% endfor %}
