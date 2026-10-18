@@ -2,7 +2,7 @@
 layout: default
 ---
 <section class="intro">
-  <p><em>Stories, essays, loglines.</em> I write short fiction, notes on how screenplays work, and for all of 2022, one logline a day.</p>
+  <p>{% if site.data.home.intro_lead and site.data.home.intro_lead != "" %}<em>{{ site.data.home.intro_lead }}</em> {% endif %}{{ site.data.home.intro_text }}</p>
 </section>
 
 {% assign today = site.time | date: "%m-%d" %}

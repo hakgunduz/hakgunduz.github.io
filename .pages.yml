@@ -68,6 +68,15 @@ content:
       - { name: logline, label: Logline, type: text }
       - { name: quote, label: Review quote, type: string }
 
+  - name: home
+    label: Home page
+    type: file
+    path: _data/home.yml
+    format: yaml
+    fields:
+      - { name: intro_lead, label: Intro (italic opening words), type: string }
+      - { name: intro_text, label: Intro (rest of the sentence), type: text }
+
   - name: about
     label: About page
     type: file
