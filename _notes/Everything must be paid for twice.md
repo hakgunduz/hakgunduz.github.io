@@ -8,4 +8,4 @@ From David Cain's essay on Raptitude: [Everything Must Be Paid for Twice](https:
 - You buy a book. Then you need to spend your time reading it.
 - You buy ingredients. Then you need to cook them, otherwise they go bad and your money is wasted.
 - Cain calls this the second price: buying is the first price, and the time and effort to actually use the thing is the second.
-- It's a very interesting idea.
+- It's such an obvious concept, but we almost always miss it, and we're never intentional about it. We're only intentional about paying the first price, and even that is influenced by lots of different factors.
