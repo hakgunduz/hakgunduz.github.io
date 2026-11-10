@@ -1,5 +1,5 @@
 ---
-title: "a working theory on how to create unputdownable books"
+title: "A working theory on how to create unputdownable books"
 date: 2026-11-07
 ---
 
