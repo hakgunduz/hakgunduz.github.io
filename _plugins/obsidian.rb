@@ -39,11 +39,15 @@ end
 
 Jekyll::Hooks.register :site, :post_read do |site|
   # Use the Obsidian file name as the title, exactly as written
-  # (Jekyll would otherwise Title Case Every Word).
+  # (Jekyll would otherwise Title Case Every Word of a hyphenated slug).
+  # Compare that generated title, not titleize_slug(filename): for a name
+  # with spaces, titleize_slug only capitalizes the first letter, which is
+  # an intentional sentence-case title and must be kept.
   site.collections.each_value do |collection|
     collection.docs.each do |doc|
       name = doc.basename_without_ext
-      doc.data["title"] = name if doc.data["title"] == Jekyll::Utils.titleize_slug(name)
+      generated = Jekyll::Utils.titleize_slug(Jekyll::Utils.slugify(name))
+      doc.data["title"] = name if doc.data["title"] == generated
     end
   end
   ObsidianLinks.build(site)

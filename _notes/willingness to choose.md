@@ -1,5 +1,5 @@
 ---
-title: "willingness to choose"
+title: "Willingness to choose"
 date: 2026-11-07
 ---
 
